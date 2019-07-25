@@ -1,11 +1,13 @@
 <img id="logo" src="./images/logo.png">
-<div id="articles">
+<div id="row no-gutters">
     {{#each articles}}
-        <div class="card">
-            <img class="news-image" src="{{image}}">
-            <h3>{{title}}</h3>
-            <h3>{{summary}}</h3>
-            <a href="{{link}}">Read More</a>
+    <div class="card col-12 col-md-4">
+        <img class="news-image card-img-top" src="{{image}}">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{summary}}</p>
+            <a class="btn btn-primary" href="{{link}}">Read More</a>
         </div>
-        {{/each}}
+    </div>
+    {{/each}}
 </div>

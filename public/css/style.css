@@ -1,13 +1,14 @@
 #logo {
     width: 50%;
+    margin-bottom: 20px;
 }
 
 .card {
-    width: 70%;
-    clear: both;
+    float: left;
+    height: 400px;
+    margin-bottom: 10px;
 }
 
 .news-image {
-    width: 30%;
-    float: left;
+    height: 200px;
 }
