@@ -24,6 +24,19 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
+app.get("/", function (req, res) {
+  db.Article.find({}).then(function (response) {
+    var dbResponse = {
+      articles: response
+    };
+    res.render("index", dbResponse);
+  })
+    .catch(function (err) {
+      console.log(err);
+      res.send(err);
+    });
+});
+
 app.get("/scrape", function (req, res) {
   axios.get("https://www.pcgamer.com/news/").then(function (response) {
     var $ = cheerio.load(response.data);
@@ -40,6 +53,12 @@ app.get("/scrape", function (req, res) {
         .children("p")
         .text()
         .split("\n")[1];
+
+      result.image = $(element)
+        .parent()
+        .children("div.image")
+        .children()
+        .data("original");
 
       result.link = $(element)
         .parent()
@@ -69,7 +88,7 @@ app.get("/articles", function (req, res) {
 });
 
 app.get("/articles/:id", function (req, res) {
-  db.Article.findOne({ _id: mongoose.ObjectId(req.params.id) })
+  db.Article.findOne({ _id: ObjectId(req.params.id) })
     .populate("note")
     .then(function (response) {
       res.send(response);
@@ -89,10 +108,6 @@ app.post("/articles/:id", function (req, res) {
       console.log(err);
       res.send(err);
     });
-});
-
-app.get("/", function (req, res) {
-  res.render("index");
 });
 
 app.listen(PORT, function () {

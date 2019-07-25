@@ -1,1 +1,11 @@
-<img src="../public/images/logo.png">
+<img id="logo" src="./images/logo.png">
+<div id="articles">
+    {{#each articles}}
+        <div class="card">
+            <img class="news-image" src="{{image}}">
+            <h3>{{title}}</h3>
+            <h3>{{summary}}</h3>
+            <a href="{{link}}">Read More</a>
+        </div>
+        {{/each}}
+</div>

@@ -1,0 +1,13 @@
+#logo {
+    width: 50%;
+}
+
+.card {
+    width: 70%;
+    clear: both;
+}
+
+.news-image {
+    width: 30%;
+    float: left;
+}

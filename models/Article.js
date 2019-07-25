@@ -20,6 +20,11 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  image: {
+    type: String,
+    required: false,
+    default: "https://yt3.ggpht.com/a/AGF-l78wYMWRhdUbDZW5Gqi1Uhpz8LERa7yj5Ljkog=s900-mo-c-c0xffffffff-rj-k-no"
+  },
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
   // This allows us to populate the Article with an associated Note
