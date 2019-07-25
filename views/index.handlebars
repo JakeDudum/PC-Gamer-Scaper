@@ -1,12 +1,14 @@
 <img id="logo" src="./images/logo.png">
+<h1 id="title" class="text-light clearfix">Web Scraper</h1>
 <div id="row no-gutters">
     {{#each articles}}
-    <div class="card col-12 col-md-4">
+    <div class="card col-11 col-md-5 bg-dark mr-5">
         <img class="news-image card-img-top" src="{{image}}">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{summary}}</p>
-            <a class="btn btn-primary" href="{{link}}">Read More</a>
+            <h5 class="card-title text-light">{{title}}</h5>
+            <p class="card-text text-light">{{summary}}</p>
+            <a class="btn btn-danger" href="{{link}}">Read More</a>
+            <button class="btn btn-danger pb-1">Notes</button>
         </div>
     </div>
     {{/each}}

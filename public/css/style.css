@@ -1,14 +1,30 @@
+body {
+    background-image: url("../images/background.png");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 #logo {
-    width: 50%;
+    width: 35%;
     margin-bottom: 20px;
+    margin-right: 1vw;
+    float: left;
+}
+
+#title {
+    padding-top: 10px;
+    font-size: 5.5vw;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .card {
-    float: left;
-    height: 400px;
-    margin-bottom: 10px;
+    margin-right: 3vw !important;
+    margin-left: 3vw !important;
+    margin-bottom: 50px !important;
+    float: left !important;
+    min-height: 440px !important;
 }
 
 .news-image {
-    height: 200px;
+    height: 225px;
 }
