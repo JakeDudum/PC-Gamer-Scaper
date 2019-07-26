@@ -8,7 +8,7 @@ This site scrapes all of the articles found on [PC Gamer's](https://www.pcgamer.
 [Scraper](https://github.com/JakeDudum/PC-Gamer-Scaper)
 
 # Link to Deployed Site (Heroku)
-[Github Pages]()
+[Heroku](https://tranquil-badlands-33243.herokuapp.com/)
 
 # Built With
 - [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML)
