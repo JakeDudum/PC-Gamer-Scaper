@@ -1,6 +1,10 @@
-$(document).on("click", "p", function () {
-  $("#notes").empty();
-  var thisId = $(this).attr("data-id");
+$(document).on("click", ".notes", function () {
+  $("#note-title").empty();
+  $(".modal-footer").empty();
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
+
+  var thisId = $(this).attr("id");
 
   $.ajax({
     method: "GET",
@@ -8,10 +12,9 @@ $(document).on("click", "p", function () {
   })
     .then(function (data) {
       console.log(data);
-      $("#notes").append("<h2>" + data.title + "</h2>");
-      $("#notes").append("<input id='titleinput' name='title' >");
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#note-title").text(data.title);
+      $(".modal-footer").append("<button type='button' class='btn btn-dark' data-dismiss='modal'>Close</button>");
+      $(".modal-footer").append("<button type='button' data-id='" + data._id + "' id='savenote' data-dismiss='modal' class='btn btn-dark'>Save Note</button>");
 
       if (data.note) {
         $("#titleinput").val(data.note.title);
@@ -33,11 +36,7 @@ $(document).on("click", "#savenote", function () {
   })
     .then(function (data) {
       console.log(data);
-      $("#notes").empty();
     });
-
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
 });
 
 $(document).on('click', "#scrape", function (event) {
@@ -48,11 +47,3 @@ $(document).on('click', "#scrape", function (event) {
     location.reload();
   });
 });
-
-// $(document).on('click', function (event) {
-//   event.preventDefault();
-
-//   $.get("/articles", function (res) {
-    
-//   });
-// });

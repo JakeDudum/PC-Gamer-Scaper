@@ -78,7 +78,7 @@ app.get("/scrape", function (req, res) {
 });
 
 app.get("/articles", function (req, res) {
-  db.Article.find({}).then(function (response) {
+  db.Article.find({}).sort({_id: -1}).then(function (response) {
     res.send(response);
   })
     .catch(function (err) {
@@ -88,10 +88,10 @@ app.get("/articles", function (req, res) {
 });
 
 app.get("/articles/:id", function (req, res) {
-  db.Article.findOne({ _id: ObjectId(req.params.id) })
+  db.Article.findOne({ _id: req.params.id })
     .populate("note")
     .then(function (response) {
-      res.send(response);
+      res.json(response);
     })
     .catch(function (err) {
       console.log(err);
@@ -102,11 +102,11 @@ app.get("/articles/:id", function (req, res) {
 app.post("/articles/:id", function (req, res) {
   db.Note.create(req.body)
     .then(function (dbNote) {
-      return db.Article.findByIdAndUpdate({ _id: mongoose.ObjectId(req.params.id) });
+      return db.Article.findOneAndUpdate({ _id: req.params.id }, {note: dbNote._id}, { new: true});
     })
     .catch(function (err) {
       console.log(err);
-      res.send(err);
+      res.json(err);
     });
 });
 
