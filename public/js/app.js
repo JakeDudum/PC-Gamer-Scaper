@@ -1,4 +1,4 @@
-$(document).on("click", "p", function() {
+$(document).on("click", "p", function () {
   $("#notes").empty();
   var thisId = $(this).attr("data-id");
 
@@ -6,7 +6,7 @@ $(document).on("click", "p", function() {
     method: "GET",
     url: "/articles/" + thisId
   })
-    .then(function(data) {
+    .then(function (data) {
       console.log(data);
       $("#notes").append("<h2>" + data.title + "</h2>");
       $("#notes").append("<input id='titleinput' name='title' >");
@@ -20,7 +20,7 @@ $(document).on("click", "p", function() {
     });
 });
 
-$(document).on("click", "#savenote", function() {
+$(document).on("click", "#savenote", function () {
   var thisId = $(this).attr("data-id");
 
   $.ajax({
@@ -31,7 +31,7 @@ $(document).on("click", "#savenote", function() {
       body: $("#bodyinput").val()
     }
   })
-    .then(function(data) {
+    .then(function (data) {
       console.log(data);
       $("#notes").empty();
     });
@@ -39,3 +39,20 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+
+$(document).on('click', "#scrape", function (event) {
+  event.preventDefault();
+
+  $.get("/scrape", function () {
+    alert("Scraped for new articles!");
+    location.reload();
+  });
+});
+
+// $(document).on('click', function (event) {
+//   event.preventDefault();
+
+//   $.get("/articles", function (res) {
+    
+//   });
+// });
