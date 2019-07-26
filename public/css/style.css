@@ -21,10 +21,6 @@ body {
     margin-bottom: 40px;
 }
 
-.news-image {
-    height: 225px;
-}
-
 .container {
     display: flex;
     flex-wrap: wrap;
