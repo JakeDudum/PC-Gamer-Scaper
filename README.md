@@ -1,6 +1,6 @@
 # PC-Gamer-Scaper
 
-![alt text](public/images/site.png "A picture of Burger Town")
+![alt text](public/images/Site.png "A picture of Burger Town")
 
 This site scrapes all of the articles found on [PC Gamer's](https://www.pcgamer.com/news/) site and displays them in one location. Users can hit the scrape button to scrape for new articles and hit the article API button to see all of the scraped json data stored in the database. Users can also select any of the articles read more button to go the full articles on [PC Gamer's](https://www.pcgamer.com/news/) site. There is also a notes button for each article that allows anyone to set a title and leave a small note which is then stored inside the database for that article. Notes are public to everyone and anyone can change or even delete them completely.
 
