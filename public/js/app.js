@@ -1,3 +1,4 @@
+// Get all notes for selected article.
 $(document).on("click", ".notes", function () {
   $("#note-title").empty();
   $(".modal-footer").empty();
@@ -23,6 +24,7 @@ $(document).on("click", ".notes", function () {
     });
 });
 
+// Saves note for the associated article.
 $(document).on("click", "#savenote", function () {
   var thisId = $(this).attr("data-id");
 
@@ -39,6 +41,7 @@ $(document).on("click", "#savenote", function () {
     });
 });
 
+// Scrapes https://www.pcgamer.com/news/ for new articles and displays them.
 $(document).on('click', "#scrape", function (event) {
   event.preventDefault();
 
