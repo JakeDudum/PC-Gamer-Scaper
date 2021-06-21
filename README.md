@@ -21,6 +21,7 @@ This site scrapes all of the articles found on [PC Gamer's](https://www.pcgamer.
 # Node Package's Used
 - [Express](https://www.npmjs.com/package/express)
 - [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Handlebars](https://www.npmjs.com/package/handlebars)
 - [Express-Handlebars](https://www.npmjs.com/package/express-handlebars)
 - [Cheerio](https://www.npmjs.com/package/cheerio)
 - [Axios](https://www.npmjs.com/package/axios)

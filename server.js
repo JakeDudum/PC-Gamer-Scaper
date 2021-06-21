@@ -3,6 +3,8 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
+const Handlebars = require('handlebars')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 var db = require("./models");
 
@@ -17,7 +19,10 @@ app.use(express.static("public"));
 
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({
+  defaultLayout: "main",
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
 app.set("view engine", "handlebars");
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
@@ -29,6 +34,7 @@ app.get("/", function (req, res) {
     var dbResponse = {
       articles: response
     };
+    console.log(dbResponse);
     res.render("index", dbResponse);
   })
     .catch(function (err) {
@@ -78,7 +84,7 @@ app.get("/scrape", function (req, res) {
 });
 
 app.get("/articles", function (req, res) {
-  db.Article.find({}).sort({_id: -1}).then(function (response) {
+  db.Article.find({}).sort({ _id: -1 }).then(function (response) {
     res.send(response);
   })
     .catch(function (err) {
@@ -102,7 +108,7 @@ app.get("/articles/:id", function (req, res) {
 app.post("/articles/:id", function (req, res) {
   db.Note.create(req.body)
     .then(function (dbNote) {
-      return db.Article.findOneAndUpdate({ _id: req.params.id }, {note: dbNote._id}, { new: true});
+      return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
     })
     .catch(function (err) {
       console.log(err);
